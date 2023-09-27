@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["source"]
-  static classes = ["supported"]
+  static classes = [ "supported" ]
 
   copy(event) {
     event.preventDefault()
