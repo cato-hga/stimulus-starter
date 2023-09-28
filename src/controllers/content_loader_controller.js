@@ -11,6 +11,10 @@ export default class extends Controller {
     }
   }
 
+  disconnect() {
+    this.stopRefreshing()
+  }
+
   load() {
     fetch(this.urlValue)
       .then(response => response.text())
@@ -18,8 +22,14 @@ export default class extends Controller {
   }
 
   startRefreshing() {
-    setInterval(() => {
+    this.refreshTimer = setInterval(() => {
       this.load()
     }, this.refreshInteralValue)
+  }
+
+  stopRefreshing() {
+    if (this.refreshTimer) {
+      clearInterval(this.refreshTimer)
+    }
   }
 }
